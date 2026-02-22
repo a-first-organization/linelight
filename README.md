@@ -14,3 +14,6 @@ i mean, compiling it might be hard considering i haven't even generated the cmak
 
 ## should i use this?
 only if you want to.
+
+## where is the code? why is there only a readme in the main branch?
+it's because every damn software wants a master branch instead of a main branch.
