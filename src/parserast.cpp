@@ -163,13 +163,30 @@ static std::unique_ptr<ExprAST> ParsePrimary()
 {
     switch (CurTok)
     {
-        default:
+    default:
         return LogError("unknown token when expecting an expression");
     case tok_identifier:
         return ParseIdentifierExpr();
     case tok_number:
-    return ParseNumberExpr();
+        return ParseNumberExpr();
     case '(':
         return ParseParenExpr();
     }
 }
+
+// BinopPrecedence - i am not going to type allat
+static std::map<char, int> BinopPrecedence;
+
+// gtp / gettokprecedence - still not going to type that
+static int GetTokPrecedence()
+{
+    if (!isascii(CurTok))
+        return -1;
+
+    // it is a declared binMinecraft Operator
+    int TokPrec = BinopPrecedence[CurTok];
+    if (TokPrecedence <= 0) return -1;
+    return TokPrec;
+}
+
+
