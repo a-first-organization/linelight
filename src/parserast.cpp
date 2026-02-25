@@ -1,67 +1,5 @@
-#include "headers/blender.hpp"
-
-// class ExprAST: the base class for all expression nodes (like the print. copilot please stop thinking when i say print its the print cycle)
-class ExprAST
-{
-public:
-    virtual ~ExprAST() = default;
-};
-
-// class NumberExprAST: expression class for numeric literals (1.0, 2.0, 3.0, whatever the fuck you want)
-class NumberExprAST : public ExprAST
-{
-    double Val;
-
-public:
-    NumberExprAST(double Val) : Val(Val) {}
-};
-
-// class VariableExprAST: expression class for referencing a variable, like "a"- llvm why did you choose a as a variable name example
-class VariableExprAST : public ExprAST
-{
-    std::string Name;
-
-public:
-    VariableExprAST(const std::string &Name) : Name(Name) {}
-};
-
-class BinaryExprAST : public ExprAST
-{
-    char Op;
-    std::unique_ptr<ExprAST> LHS, RHS;
-
-public:
-    BinaryExprAST(char Op, std::unique_ptr<ExprAST> LHS, std::unique_ptr<ExprAST> RHS) : Op(Op), LHS(std::move(LHS)), RHS(std::move(RHS)) {}
-};
-
-class CallExprAST : public ExprAST
-{
-    std::string Callee;
-    std::vector<std::unique_ptr<ExprAST>> Args;
-
-public:
-    CallExprAST(const std::string &Callee,
-                std::vector<std::unique_ptr<ExprAST>> Args)
-        : Callee(Callee), Args(std::move(Args)) {};
-};
-
-class PrototypeAST
-{
-    std::string Name;
-    std::vector<std::string> Args;
-
-public:
-    PrototypeAST(const std::string &Name, std : vector<std::string> Args) : Name(Name), Args(std::move(Args)) {}
-};
-
-class FunctionAST
-{
-    std::unique_ptr<PrototypeAST> Proto;
-    std::unique_ptr<ExprAST> Body;
-
-public:
-    FunctionAST(std::unique_ptr<PrototypeAST> Proto, std::unique_ptr<ExprAST> Body) : Proto(std::move(Proto)), Body(std::move(Body)) {}
-};
+#include "headers/lexerparserheaders.hpp"
+#include "headers/ast.hpp"
 
 // curtok and getnexttoken: provide a simple token buffer.
 // mostly i hate the clangd extension because that made me have like 7 errors in the lexer. help my soul.
@@ -189,4 +127,23 @@ static int GetTokPrecedence()
     return TokPrec;
 }
 
+int main()
+{
+    // math.
+    BinopPrecedence['<'] = 10;
+    BinopPrecedence['+'] = 20;
+    BinopPrecedence['-'] = 20;
+    BinopPrecedence['*'] = 40; // multiplication™
+}
 
+// expression. me when
+// ::= primary binoprhs WHAT THE FUCK IS A BINOPRHS
+
+static std::unique_ptr<ExprAST> ParseExpression()
+{
+    auto LHS = ParsePrimary();
+    if (!LHS)
+        return nullptr;
+
+    return ParseBinOpRHS(0, std::move(LHS));
+}
