@@ -147,3 +147,14 @@ static std::unique_ptr<ExprAST> ParseExpression()
 
     return ParseBinOpRHS(0, std::move(LHS));
 }
+
+static std::unique_ptr<ExprAST> ParseBinOpRHS(int Prec, std::unique_ptr<ExprAST> LHS)
+{
+    while (true)
+    {
+        int TokPrec = GetTokPrecedence();
+        
+        if (TokPrec < Prec)
+            return LHS;
+    }
+}
