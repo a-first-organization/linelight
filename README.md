@@ -1,19 +1,31 @@
 # LineLight
-a programming language by a single person.
 
-## How To Compile
-use make. nah i'm joking, i'm gonna make the cmake soon, so don't use make yet, use cl.exe or clang-cl if you're on windows, gnu compiler collection for linux, and for people who wanna create the cmake and use make, JUST DO IT.
+## a little project Kaleidoscope-based by ScaryKurru, The Coder Boy and KaidoKaiB.
 
-# Questions (that nobody asked but i'm here to answer)
+---
 
-## why did you make this?
-it's a project of mine i wanna remake.
+## How To Compile LineLight
 
-## is it hard?
-i mean, compiling it might be hard considering i haven't even generated the cmake project yet
+i have no idea.
 
-## should i use this?
-only if you want to.
+---
 
-## where is the code? why is there only a readme in the main branch?
-it's because every damn software wants a master branch instead of a main branch.
+## can you tell the history of it?
+
+LineLight is a project by me, RobCantor **(also known as ScaryKurru)** and KaidoKaiB **(also known as salt)**. it started out as a project when me and RobCantor decided to make a programming language. we were on Guilded DMs, talking about the thing, and he came up with the name. but we didn't know how to code. and that was the problem. until December 2025. it was when i made the project again. i decided to look up coding a programming lang tutorials, until i found LLVM's one. the one with the Kaleidoscope programming lang. and i decided that would be what i choose. so i began solo developing LineLight.
+
+---
+
+## Questions That People Might Have
+
+###### what inspired you to make LineLight in 2024?
+
+coding!
+
+###### what did you do before making LineLight?
+
+i made videos.
+
+###### are you still working on LineLight?
+
+as you can see since i'm updating the markdown, Yes I Am™
